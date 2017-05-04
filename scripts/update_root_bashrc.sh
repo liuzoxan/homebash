@@ -4,9 +4,9 @@ set -e
 
 cat >> /root/.bashrc << EOF
 
-test -s /etc/mobvista/aliases.sh  && . /etc/mobvista/aliases.sh || true
-test -s /etc/mobvista/ps-twtty-7.sh &&  . /etc/mobvista/ps-twtty-7.sh || true
-test -s /etc/mobvista/showcolors &&  . /etc/mobvista/showcolors || true
+test -s /etc/homebash/aliases.sh  && . /etc/homebash/aliases.sh || true
+test -s /etc/homebash/ps-twtty-7.sh &&  . /etc/homebash/ps-twtty-7.sh || true
+test -s /etc/homebash/showcolors &&  . /etc/homebash/showcolors || true
 
 test -s ~/aliases.sh  && . ~/aliases.sh || true
 

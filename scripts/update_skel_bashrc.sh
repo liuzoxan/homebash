@@ -10,13 +10,13 @@ cat > /etc/skel/bin/update_bashrc.sh << 'EOF'
 set -e
 
 dst_file="$HOME/.bashrc"
-source mobvista_functions.sh
+source homebash_functions.sh
 touch "$dst_file"
-clean_mobvista "$dst_file"
-print_mobvista "
-test -s /etc/mobvista/aliases.sh  && . /etc/mobvista/aliases.sh || true
-test -s /etc/mobvista/ps-twtty-7.sh &&  . /etc/mobvista/ps-twtty-7.sh || true
-test -s /etc/mobvista/showcolors &&  . /etc/mobvista/showcolors || true
+clean_homebash "$dst_file"
+print_homebash "
+test -s /etc/homebash/aliases.sh  && . /etc/homebash/aliases.sh || true
+test -s /etc/homebash/ps-twtty-7.sh &&  . /etc/homebash/ps-twtty-7.sh || true
+test -s /etc/homebash/showcolors &&  . /etc/homebash/showcolors || true
 
 test -s ~/aliases.sh  && . ~/aliases.sh || true
 
@@ -30,21 +30,21 @@ EOF
 
 chmod +x /etc/skel/bin/update_bashrc.sh
 
-cat > /etc/skel/bin/mobvista_functions.sh << 'EOF'
+cat > /etc/skel/bin/homebash_functions.sh << 'EOF'
 #!/bin/bash
 
 set -e
 
-BEGIN_MARKER="### BEGIN Mobvista SETTINGS ###"
-END_MARKER="### END Mobvista SETTINGS ###"
+BEGIN_MARKER="### BEGIN homebash SETTINGS ###"
+END_MARKER="### END homebash SETTINGS ###"
 
-clean_mobvista() {
-    # Delete mobvista settings
+clean_homebash() {
+    # Delete homebash settings
     target_file="$1"
     sed -i /"$BEGIN_MARKER"/,/"$END_MARKER"/d "$target_file"
 }
 
-print_mobvista() {
+print_homebash() {
     content="$1"
     echo
     echo "$BEGIN_MARKER"
